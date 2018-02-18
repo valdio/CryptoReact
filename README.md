@@ -1,4 +1,4 @@
-#Crypto React
+# Crypto React
 
 React native app for cryptocurrencies
 
