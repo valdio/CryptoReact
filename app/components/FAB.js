@@ -6,7 +6,7 @@ import {
     TouchableHighlight,
 } from 'react-native'
 import PropTypes from 'prop-types'
-import refresh from '../assets/images/ic_refresh.png'
+import refresh from'../assets/images/ic_refresh.png'
 
 export default class FAB extends Component {
     render() {

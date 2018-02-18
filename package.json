@@ -20,10 +20,23 @@
   "devDependencies": {
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "jest": "22.3.0",
+    "mocha": "^5.0.1",
+    "react-dom": "^16.2.0",
+    "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.2.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/?!(react-native-root-siblings)"
+    ],
+    "moduleNameMapper": {
+      "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
+      "^[@./a-zA-Z0-9$_-]+\\.(png|gif)$": "RelativeImageStub"
+    }
   }
 }

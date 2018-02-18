@@ -22,7 +22,6 @@ class App extends Component {
     }
 
     _renderRoutes() {
-        // return <Settings {...this.props}/>
         return <View style={styles.container}>
             <Route exact path="/" render={(props) => {
                 return (

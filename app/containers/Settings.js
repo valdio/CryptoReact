@@ -9,7 +9,6 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 
-
 class Settings extends Component {
     constructor(props) {
         super(props)
@@ -137,13 +136,11 @@ function mapStateToProps(state) {
         settings: state.settings,
     }
 }
-
-export default connect(mapStateToProps)(Settings)
-
 Settings.propTypes = {
     settings: PropTypes.object,
     setFiatCurrency: PropTypes.func.isRequired
 }
+export default connect(mapStateToProps)(Settings)
 
 const styles = StyleSheet.create({
     container: {

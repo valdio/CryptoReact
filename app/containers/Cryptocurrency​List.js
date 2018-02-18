@@ -32,7 +32,6 @@ class CryptocurrencyList extends Component {
                             fiatCurrency={this.getFiatCurrency()}
                             currencyItem={item}/>
                     }/>
-
                 <FAB refreshTrigger={() => this.refreshTrigger()}/>
             </View>
         )
@@ -56,13 +55,14 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(CryptocurrencyList)
-
 CryptocurrencyList.propTypes = {
     cryptoCurrencyList: PropTypes.array,
     settings: PropTypes.object,
     getCryptoCurrenciesList: PropTypes.func.isRequired,
 }
+
+export default connect(mapStateToProps)(CryptocurrencyList)
+
 
 const styles = StyleSheet.create({
     container: {

@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         margin: 8,
     },
     text: {
+        flex: 0.5,
         fontSize: 16,
         color: GLOBALS.COLOR.WHITE
     }

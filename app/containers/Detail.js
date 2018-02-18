@@ -1,6 +1,7 @@
 import GLOBALS from '../lib/globals'
 import React, {Component} from 'react'
 import {
+    ScrollView,
     StyleSheet,
     Text,
     TouchableHighlight,
@@ -20,70 +21,68 @@ class Detail extends Component {
         const {currency} = this.props
         return (
             <View style={styles.container}>
-                <View style={{flex: 1}}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={{flex: 1, marginBottom:30,marginTop:20}}>
 
-                    <View style={styles.section}>
-                        <Text style={styles.text}>Name: {currency.name}</Text>
-                        <Text style={styles.text}>Symbol: {currency.symbol}</Text>
-                    </View>
-
-                    <View style={styles.section}>
-                        <Text
-                            style={styles.text}>Price: {this.getCryptocurrencyPrice(currency)}</Text>
-                        <Text style={styles.text}>Rank: {currency.rank}</Text>
-                    </View>
-
-                    <View style={styles.section}>
-
-
-                        <Text style={styles.text}>Price​ ​in​ ​bitcoin: {currency.price_btc} BTC</Text>
-                    </View>
-
-                    <View style={[styles.spacing, {marginRight: 200}]}>
-                        <Text style={styles.sectionText}>Cryptocurrency change</Text>
                         <View style={styles.section}>
-                            <Text style={styles.text}>7 Days</Text>
-                            <Text style={styles.text}>{currency.percent_change_7d}%</Text>
+                            <Text style={styles.text}>Name: {currency.name}</Text>
+                            <Text style={styles.text}>Symbol: {currency.symbol}</Text>
                         </View>
+
                         <View style={styles.section}>
-                            <Text style={styles.text}>24 Hours</Text>
-                            <Text style={styles.text}>{currency.percent_change_24h}%</Text>
+                            <Text
+                                style={styles.text}>Price: {this.getCryptocurrencyPrice(currency)}</Text>
+                            <Text style={styles.text}>Rank: {currency.rank}</Text>
                         </View>
+
                         <View style={styles.section}>
-                            <Text style={styles.text}>Last hour</Text>
-                            <Text style={styles.text}>{currency.percent_change_1h}%</Text>
+
+                            <Text style={[styles.text,{flex:1}]}>Price​ ​in​ ​bitcoin: {currency.price_btc} BTC</Text>
+                        </View>
+
+                        <View style={[styles.spacing]}>
+                            <Text style={styles.sectionText}>Cryptocurrency change</Text>
+                            <View style={styles.section}>
+                                <Text style={styles.text}>7 Days</Text>
+                                <Text style={styles.text}>{currency.percent_change_7d}%</Text>
+                            </View>
+                            <View style={styles.section}>
+                                <Text style={styles.text}>24 Hours</Text>
+                                <Text style={styles.text}>{currency.percent_change_24h}%</Text>
+                            </View>
+                            <View style={styles.section}>
+                                <Text style={styles.text}>Last hour</Text>
+                                <Text style={styles.text}>{currency.percent_change_1h}%</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.spacing}/>
+                        <View style={styles.section}>
+                            <Text style={[styles.text,{flex:1}]}>24h​ volume: {this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.EUR ? ` € ${currency['24h_volume_eur']}`
+                                    : this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.CNY ? ` ¥ ${currency['24h_volume_cny']}`
+                                        : ` $ ${currency['24h_volume_usd']}`}</Text>
+                        </View>
+
+                        <View style={styles.section}>
+                            <Text style={[styles.text,{flex:1}]}>Market cap: {this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.EUR ? ` € ${currency.market_cap_eur}`
+                                    : this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.CNY ? ` ¥ ${currency.market_cap_cny}`
+                                        : `$ ${currency.market_cap_usd}`}</Text>
+                        </View>
+
+
+                        <View style={styles.spacing}>
+                            <Text style={styles.sectionText}>Currency supply</Text>
+                            <View style={styles.section}>
+                                <Text style={styles.text}>Total supply</Text>
+                                <Text style={styles.text}>{currency.total_supply} {currency.symbol}</Text>
+                            </View>
+                            <View style={styles.section}>
+                                <Text style={styles.text}>Available supply</Text>
+                                <Text style={styles.text}>{currency.available_supply} {currency.symbol}</Text>
+                            </View>
                         </View>
                     </View>
-
-                    <View style={styles.spacing}/>
-                    <View style={styles.section}>
-                        <Text style={styles.text}>24h​
-                            ​volume: {this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.EUR ? ` € ${currency['24h_volume_eur']}`
-                                : this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.CNY ? ` ¥ ${currency['24h_volume_cny']}`
-                                    : ` $ ${currency['24h_volume_usd']}`}</Text>
-                    </View>
-
-                    <View style={styles.section}>
-                        <Text style={styles.text}>Market
-                            cap: {this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.EUR ? ` € ${currency.market_cap_eur}`
-                                : this.props.settings.fiatCurrency === GLOBALS.FIAT_CURRENCY.CNY ? ` ¥ ${currency.market_cap_cny}`
-                                    : `$ ${currency.market_cap_usd}`}</Text>
-                    </View>
-
-
-                    <View style={styles.spacing}>
-                        <Text style={styles.sectionText}>Currency supply</Text>
-                        <View style={styles.section}>
-                            <Text style={styles.text}>Total supply</Text>
-                            <Text style={styles.text}>{currency.total_supply} {currency.symbol}</Text>
-                        </View>
-                        <View style={styles.section}>
-                            <Text style={styles.text}>Available supply</Text>
-                            <Text style={styles.text}>{currency.available_supply} {currency.symbol}</Text>
-                        </View>
-                    </View>
-                </View>
-
+                </ScrollView>
                 <TouchableHighlight
                     underlayColor={GLOBALS.COLOR.HEADER_COLOR}
                     onPress={this.refreshCurrency}
@@ -123,13 +122,12 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps)(Detail)
-
 Detail.propTypes = {
     settings: PropTypes.object.isRequired,
     currencyId: PropTypes.string.isRequired,
     currency: PropTypes.object.isRequired
 }
+export default connect(mapStateToProps)(Detail)
 
 const styles = StyleSheet.create({
     container: {
@@ -137,8 +135,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         backgroundColor: GLOBALS.COLOR.WHITE,
-        paddingRight: 20,
-        paddingLeft: 20
+        paddingRight: 5,
+        paddingLeft: 5
     },
     section: {
         flexDirection: 'row',
@@ -146,6 +144,7 @@ const styles = StyleSheet.create({
         margin: 8,
     },
     text: {
+        flex: 0.5,
         fontSize: 16,
         color: GLOBALS.COLOR.DARK_TEXT_COLOR
     },
@@ -156,7 +155,6 @@ const styles = StyleSheet.create({
     },
     button: {
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: GLOBALS.COLOR.RED,
         marginBottom: 20,
         borderRadius: 6,

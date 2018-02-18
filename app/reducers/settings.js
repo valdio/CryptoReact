@@ -4,9 +4,8 @@ import * as types from '../actions/types'
 export const settings = createReducer({}, {
     [types.SET_FIAT_CURRENCY](state, action) {
         return {
-            // ...state,
+            ...state,
             fiatCurrency: action.fiatCurrency
         }
     },
-
 })

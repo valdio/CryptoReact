@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     titleText: {
         alignSelf: 'center',
         fontSize: 18,
-        color: GLOBALS.COLOR.WHITE
+        color: GLOBALS.COLOR.WHITE,
+        zIndex: 5
     },
     image: {
         width: 24,
