@@ -1,6 +1,11 @@
 # Crypto React
 
-React native app for cryptocurrencies
+React native app for cryptocurrencies. Monitor the CoinMarket at any time
+
+|![Screenshot](https://github.com/valdio/CryptoReact/blob/master/Screenshots/Screenshot_1518983327.png)|![Screenshot](https://github.com/valdio/CryptoReact/blob/master/Screenshots/Screenshot_1518983338.png)|![Screenshot](https://github.com/valdio/CryptoReact/blob/master/Screenshots/Screenshot_1518983312.png)|
+| ------------- | ------------- | ------------- |
+
+
 
 ## How to run the app?
 
