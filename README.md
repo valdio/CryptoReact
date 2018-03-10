@@ -6,6 +6,21 @@ React native app for cryptocurrencies. Monitor the CoinMarket at any time
 | ------------- | ------------- | ------------- |
 
 
+### NOTE! 
+This app is used as a starter React Native app to quickly set up a new project.  
+
+Used libraries:
+* redux
+* react-redux
+* redux-logger
+* redux-thunk
+* redux-persist
+* react-router-native
+
+For testing 
+*  jest
+* enzyme
+
 
 ## How to run the app?
 
